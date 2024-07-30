@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Friends } from "../lib/friendlist";
 import Button from "../UI/Button";
+import FormAddFriend from "./FormAddFriend";
 
 const FriendList: FC<{ friends: Friends[] }> = (props) => {
   return (
@@ -45,6 +46,7 @@ const FriendList: FC<{ friends: Friends[] }> = (props) => {
           );
         })}
       </ul>
+      <FormAddFriend />
       <div className="flex justify-end w-full">
         <Button>Tambah Teman</Button>
       </div>
