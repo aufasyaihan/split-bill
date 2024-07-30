@@ -5,7 +5,7 @@ import initialFriends from "./lib/friendlist";
 function App() {
   return (
     <>
-      <section className="grid grid-cols-2 h-screen gap-5 mx-40">
+      <section className="min-h[66vh] grid grid-cols-2 gap-16 items-start">
         <FriendList friends={initialFriends} />
         <FormSplitBill />
       </section>
