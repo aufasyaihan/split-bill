@@ -28,9 +28,11 @@ npm start
 
 The Split Bill project offers the following features:
 
-- Easy bill splitting: Enter the total bill amount and the number of participants, and the app will calculate the amount each person needs to pay.
-- Customizable tip percentage: Adjust the tip percentage to suit your preferences.
-- Bill history: Keep track of previous bills and their details.
+- Show friends: View a list of friends and their respective bills.
+- Add friends: Add new friends to the bill splitting group.
+- Add bill to each friend: Assign bills to each friend individually.
+- Calculate the bill: Automatically calculate the amount each person needs to pay based on their individual bills.
+- Debt tracking: Identify if a person owes money or has been overpaid based on the calculated bill.
 
 ## Technologies Used
 
