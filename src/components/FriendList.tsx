@@ -1,9 +1,13 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Friends } from "../lib/friendlist";
 import Button from "../UI/Button";
 import FormAddFriend from "./FormAddFriend";
 
 const FriendList: FC<{ friends: Friends[] }> = (props) => {
+  const [formVisible, setFormVisible] = useState(false);
+  const handleFormVisible = () => {
+    setFormVisible((prev) => !prev);
+  };
   return (
     <section className="flex flex-col gap-3 items-center justify-center h-screen">
       <ul className="flex flex-col gap-3 bg-stone-200 w-full px-2 py-2 rounded">
@@ -46,9 +50,11 @@ const FriendList: FC<{ friends: Friends[] }> = (props) => {
           );
         })}
       </ul>
-      <FormAddFriend />
+      {formVisible && <FormAddFriend />}
       <div className="flex justify-end w-full">
-        <Button>Tambah Teman</Button>
+        <Button onClick={handleFormVisible}>
+          {formVisible ? "Tutup" : "Tambah Teman"}
+        </Button>
       </div>
     </section>
   );
