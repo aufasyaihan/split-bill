@@ -9,8 +9,8 @@ const FriendList: FC<{ friends: Friends[] }> = (props) => {
     setFormVisible((prev) => !prev);
   };
   return (
-    <section className="grid gap-3 items-center justify-center h-fit my-56">
-      <ul className="flex flex-col gap-3 bg-stone-200 w-full px-2 py-2 rounded">
+    <section className="grid gap-3 items-center justify-center h-72 my-56">
+      <ul className="flex flex-col gap-3 bg-stone-200 h-full w-full px-2 py-2 rounded">
         {props.friends.map((friend) => {
           const formattedBalance = new Intl.NumberFormat("id-ID", {
             style: "currency",
@@ -27,7 +27,7 @@ const FriendList: FC<{ friends: Friends[] }> = (props) => {
                 alt={friend.name}
                 className="w-12 h-12 rounded-full"
               />
-              <div className="flex items-center justify-between w-full">
+              <div className="flex gap-3 items-center justify-between w-full">
                 <div>
                   <h2>{friend.name}</h2>
                   {friend.balance > 0 && (

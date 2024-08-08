@@ -14,7 +14,7 @@ const FormSplitBill: FC = () => {
     console.log(data);
   };
   return (
-    <div className="flex items-center justify-center h-screen">
+    <section className="flex gap-3 items-center justify-center h-72 my-56">
       <form
         onSubmit={handleSubmit(onSubmitForm)}
         className="flex flex-col bg-stone-200 w-full px-2 py-2 rounded"
@@ -59,7 +59,7 @@ const FormSplitBill: FC = () => {
           <Button>Hitung</Button>
         </div>
       </form>
-    </div>
+    </section>
   );
 };
 
