@@ -3,15 +3,25 @@ import { Friends } from "../lib/friendlist";
 import Button from "../UI/Button";
 import FormAddFriend from "./FormAddFriend";
 
-const FriendList: FC<{ friends: Friends[] }> = (props) => {
+interface Props {
+  friends: Friends[];
+  onFormVisibleToggle: (id: number) => void;
+}
+
+const FriendList: FC<Props> = ({ friends, onFormVisibleToggle }) => {
   const [formVisible, setFormVisible] = useState(false);
+  const [visibleFriend, setVisibleFriend] = useState<number | null>(null);
   const handleFormVisible = () => {
     setFormVisible((prev) => !prev);
+  };
+  const handleFriendVisible = (friendId: number) => {
+    setVisibleFriend((prev) => (prev === friendId ? null : friendId));
+    onFormVisibleToggle(friendId);
   };
   return (
     <section className="grid gap-3 items-center justify-center h-72 my-56">
       <ul className="flex flex-col gap-3 bg-stone-200 h-full w-full px-2 py-2 rounded">
-        {props.friends.map((friend) => {
+        {friends.map((friend) => {
           const formattedBalance = new Intl.NumberFormat("id-ID", {
             style: "currency",
             currency: "IDR",
@@ -44,7 +54,9 @@ const FriendList: FC<{ friends: Friends[] }> = (props) => {
                     <p className="text-gray-500">Tidak ada hutang piutang</p>
                   )}
                 </div>
-                <Button>Pilih</Button>
+                <Button onClick={() => handleFriendVisible(friend.id)}>
+                  {visibleFriend === friend.id ? "Tutup" : "Pilih"}
+                </Button>
               </div>
             </li>
           );
