@@ -14,7 +14,7 @@ function App() {
     const friend: Friends = {
       id: +new Date() + Math.random(),
       name: newFriend.name,
-      image: newFriend.image,
+      image: "https://i.pravatar.cc/48?u=" + Math.random(),
       balance: 0,
     };
     setFriends((prevFriend) => [...prevFriend, friend]);

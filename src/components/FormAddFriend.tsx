@@ -30,7 +30,7 @@ const FormAddFriend: FC<Props> = ({ onAddFriend }) => {
       </div>
       <div className="flex flex-col group">
         <label htmlFor="image">Image</label>
-        <input type="file" {...register("image")} />
+        <input type="file" accept=".png" disabled {...register("image")} />
       </div>
       <div className="flex justify-end">
         <Button>Tambah</Button>
