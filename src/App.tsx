@@ -31,8 +31,8 @@ function App() {
           : friend
       )
     );
+    console.log(id, amount);
   }
-  console.log(userId);
 
   return (
     <>

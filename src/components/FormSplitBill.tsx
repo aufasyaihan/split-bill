@@ -6,7 +6,7 @@ import { Friends } from "../lib/friendlist";
 interface Input {
   totalAmount: number;
   yourAmount: number;
-  user: number;
+  user: string; // Keep as string to match the input type
 }
 
 interface Props {
@@ -20,8 +20,9 @@ const FormSplitBill: FC<Props> = ({ currUser, friends, updateFriend }) => {
     mode: "onChange",
   });
   const onSubmitForm = (data: Input) => {
-    console.log(data);
-    updateFriend(data.user, data.yourAmount);
+    const userId = +data.user;
+    console.log({ ...data, user: userId });
+    updateFriend(userId, data.yourAmount);
   };
 
   const totalAmount = watch("totalAmount", 0);
@@ -57,7 +58,7 @@ const FormSplitBill: FC<Props> = ({ currUser, friends, updateFriend }) => {
         <div className="flex flex-col group">
           <label htmlFor="yourAmount">Tagihan {data?.name}</label>
           <input
-            type="text"
+            type="number"
             value={otherAmount}
             className="px-2 rounded-md bg-stone-300 border-stone-400 border-2 focus:outline-none focus:ring focus:ring-stone-300"
             disabled
@@ -69,8 +70,8 @@ const FormSplitBill: FC<Props> = ({ currUser, friends, updateFriend }) => {
             {...register("user")}
             className="px-2 rounded-md bg-stone-100 border-stone-400 border-2 focus:outline-none focus:ring focus:ring-stone-300"
           >
-            <option value={1}>Kamu</option>
-            <option value={data?.id}>{data?.name}</option>
+            <option value="1">Kamu</option> {/* value as string */}
+            <option value={data?.id?.toString()}>{data?.name}</option>
           </select>
         </div>
         <div className="flex justify-end">
