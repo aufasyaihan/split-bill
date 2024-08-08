@@ -19,6 +19,19 @@ function App() {
     };
     setFriends((prevFriend) => [...prevFriend, friend]);
   };
+
+  const handleUpdateFriend = (id: number, amount: number) => {
+    setFriends((prevFriend) =>
+      prevFriend.map((friend) =>
+        friend.id === id
+          ? {
+              ...friend,
+              balance: friend.balance + amount,
+            }
+          : friend
+      )
+    );
+  }
   console.log(userId);
 
   return (
@@ -29,7 +42,7 @@ function App() {
           onAddFriend={handleAddFriend}
           onFormVisibleToggle={handleFormVisible}
         />
-        {userId && <FormSplitBill currUser={userId} friends={friends} />}
+        {userId && <FormSplitBill currUser={userId} friends={friends} updateFriend={handleUpdateFriend} />}
       </section>
     </>
   );

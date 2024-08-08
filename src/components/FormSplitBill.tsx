@@ -12,14 +12,16 @@ interface Input {
 interface Props {
   friends: Friends[];
   currUser: number;
+  updateFriend: (id: number, amount: number) => void;
 }
 
-const FormSplitBill: FC<Props> = ({ currUser, friends }) => {
+const FormSplitBill: FC<Props> = ({ currUser, friends, updateFriend }) => {
   const { register, handleSubmit, watch } = useForm<Input>({
     mode: "onChange",
   });
   const onSubmitForm = (data: Input) => {
     console.log(data);
+    updateFriend(data.user, data.yourAmount);
   };
 
   const totalAmount = watch("totalAmount", 0);
