@@ -1,23 +1,31 @@
 import { FC, useState } from "react";
 import { Friends } from "../lib/friendlist";
 import Button from "../UI/Button";
-import FormAddFriend from "./FormAddFriend";
+import FormAddFriend, { Input } from "./FormAddFriend";
 
 interface Props {
   friends: Friends[];
   onFormVisibleToggle: (id: number) => void;
+  onAddFriend: (newFriend: Input) => void;
 }
 
-const FriendList: FC<Props> = ({ friends, onFormVisibleToggle }) => {
+const FriendList: FC<Props> = ({
+  onFormVisibleToggle,
+  onAddFriend,
+  friends,
+}) => {
   const [formVisible, setFormVisible] = useState(false);
   const [visibleFriend, setVisibleFriend] = useState<number | null>(null);
+
   const handleFormVisible = () => {
     setFormVisible((prev) => !prev);
   };
+
   const handleFriendVisible = (friendId: number) => {
     setVisibleFriend((prev) => (prev === friendId ? null : friendId));
     onFormVisibleToggle(friendId);
   };
+
   return (
     <section className="grid gap-3 items-center justify-center h-72 my-56">
       <ul className="flex flex-col gap-3 bg-stone-200 h-full w-full px-2 py-2 rounded">
@@ -62,7 +70,7 @@ const FriendList: FC<Props> = ({ friends, onFormVisibleToggle }) => {
           );
         })}
       </ul>
-      {formVisible && <FormAddFriend />}
+      {formVisible && <FormAddFriend onAddFriend={onAddFriend} />}
       <div className="flex justify-end w-full">
         <Button onClick={handleFormVisible}>
           {formVisible ? "Tutup" : "Tambah Teman"}

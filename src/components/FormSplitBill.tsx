@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import Button from "../UI/Button";
-import initialFriends from '../lib/friendlist'
+import { Friends } from '../lib/friendlist'
 
 interface Input {
   totalAmount: number;
@@ -10,15 +10,16 @@ interface Input {
 }
 
 interface Props {
+  friends: Friends[];
   currUser: number;
 }
 
-const FormSplitBill: FC<Props> = ({ currUser }) => {
+const FormSplitBill: FC<Props> = ({ currUser, friends }) => {
   const { register, handleSubmit } = useForm<Input>();
   const onSubmitForm = (data: Input) => {
     console.log(data);
   };
-  const data = initialFriends.find((friend) => friend.id === currUser);
+  const data = friends!.find((friend) => friend.id === currUser);
   return (
     <section className="flex gap-3 items-center justify-center h-72 my-56">
       <form

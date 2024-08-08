@@ -2,15 +2,22 @@ import { FC } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Button from "../UI/Button";
 
-interface Input {
+export interface Input {
+  id: number;
   name: string;
   image: string;
+  balance: number;
 }
 
-const FormAddFriend: FC = () => {
+interface Props {
+  onAddFriend: (newFriend: Input) => void;
+}
+
+const FormAddFriend: FC<Props> = ({ onAddFriend }) => {
   const { register, handleSubmit } = useForm<Input>();
   const onSubmitForm: SubmitHandler<Input> = (data) => {
     console.log(data);
+    onAddFriend(data);
   };
   return (
     <form
