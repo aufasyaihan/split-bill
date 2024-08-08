@@ -57,9 +57,8 @@ const FormSplitBill: FC<Props> = ({ currUser, friends }) => {
             {...register("user")}
             className="px-2 rounded-md bg-stone-100 border-stone-400 border-2 focus:outline-none focus:ring focus:ring-stone-300"
           >
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
+            <option value="You">Kamu</option>
+            <option value={data?.id}>{data?.name}</option>
           </select>
         </div>
         <div className="flex justify-end">
